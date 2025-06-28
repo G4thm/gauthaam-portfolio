@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauthaam's Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/tab.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/Profile.jpg" alt="Richard hanrick" width="100">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Gauthaam">GAUTHAAM PREMKUMAR</h1>
+
+          <p class="title">Computer Science and Engineering Student</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <div class="email-container">
+                <a href="mailto:gauthaampremkumar@gmail.com" class="contact-link" title="Send email to Gauthaam">gauthaampremkumar@gmail.com</a>
+                <button class="copy-email-btn" onclick="copyEmail()" title="Copy email address">
+                  <ion-icon name="copy-outline"></ion-icon>
+                </button>
+                <a href="https://mail.google.com/mail/?view=cm&to=gauthaampremkumar@gmail.com" target="_blank" class="gmail-btn" title="Open in Gmail">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+91 7305518018" class="contact-link">+91 7305518018</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2004-11-29">November 29, 2004</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Puducherry, India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/gauthaam-premkumar-75a327256/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.hackerrank.com/profile/gauthaam04" class="social-link" title="HackerRank Profile">
+              <img src="./assets/images/HackerRank.png" alt="HackerRank" style="width: 18px; height: 18px; filter: brightness(0.7);">
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/G4thm" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Certificates</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+          Hi, I'm Gauthaam P, a final-year B.Tech Computer Science and Engineering student at Sri Manakula Vinayagar Engineering College, Puducherry, with a current CGPA of 8.37. 
+          Passionate about building impactful software, I specialize in Java, C#, DBMS, and problem solving using data structures and algorithms.
+
+
+          <p>
+            Over the past few years, I've consistently sought opportunities that allow me to challenge myself and grow — both personally and professionally. I’ve completed virtual internships in Java Development with CodSoft and CodersCave, and earned certifications from platforms like HackerRank, Infosys, Coursera, and Google.
+
+            </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">Interested Domains</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Design</h4>
+
+                <p class="service-item-text">
+                  Passionate about creating intuitive and visually appealing user interfaces. Eager to learn modern design principles and user experience best practices.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Development</h4>
+
+                <p class="service-item-text">
+                  Enthusiastic about building responsive and dynamic web applications using modern frameworks and technologies. Ready to contribute to innovative projects.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile Development</h4>
+
+                <p class="service-item-text">
+                  Excited to explore mobile app development for Android and iOS platforms. Looking forward to creating user-friendly mobile solutions.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <!--
+          - Resume Tab
+        -->
+        <section class="resume-tab">
+          <button class="view-resume-btn" onclick="viewResumeFullscreen()">
+            <div class="resume-icon">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
+            <div class="resume-content">
+              <h3 class="resume-tab-title">View My Resume</h3>
+              <p class="resume-tab-text">Click to open my complete resume in a new window</p>
+            </div>
+            <div class="resume-arrow">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </button>
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Sri Manakula Vinayagar Engineering College</h4>
+
+              <span>2022 — 2026</span>
+
+              <p class="timeline-text">
+                Currently pursuing B.Tech in Computer Science and Engineering with a CGPA of 8.37.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">St.Patrick Matriculation Higher Secondary School</h4>
+
+              <span>2022</span>
+
+              <p class="timeline-text">
+                Completed Higher Secondary Education with a score of 77.66% in the Science stream.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">St.Patrick Matriculation Higher Secondary School</h4>
+
+              <span>2020</span>
+
+              <p class="timeline-text">
+                Completed Secondary Education with a score of 69.66% .
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+ 
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-design.svg" alt="Web Design" class="skill-icon">
+                  <h5 class="h5">Web design</h5>
+                </div>
+                <data value="80">Intermediate</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-java.svg" alt="Java" class="skill-icon">
+                  <h5 class="h5">Java : </h5>
+                </div>
+                <data value="70">Proficient</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-problem-solving.svg" alt="Problem Solving" class="skill-icon">
+                  <h5 class="h5">Problem Solving : </h5>
+                </div>
+                <data value="90">Proficient</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-data-structures.svg" alt="Data Structures" class="skill-icon">
+                  <h5 class="h5">Data Structures : </h5>
+                </div>
+                <data value="50">Intermediate</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+
+            </li>
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-database.svg" alt="DBMS" class="skill-icon">
+                  <h5 class="h5">DBMS : </h5>
+                </div>
+                <data value="70">Proficient</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <div class="skill-title-with-icon">
+                  <img src="./assets/images/icon-oop.svg" alt="Object Oriented Programming" class="skill-icon">
+                  <h5 class="h5">Object Oriented Programming : </h5>
+                </div>
+                <data value="70">Proficient</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CERTIFICATIONS
+      -->
+
+      <article class="portfolio" data-page="certificates">
+
+        <header>
+          <h2 class="h2 article-title">Certifications</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Programming</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Database</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Programming</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Database</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="programming">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/Coursera fundamentals of java.pdf', 'Coursera Java Fundamentals Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="school-outline"></ion-icon>
+                    <span>Java Fundamentals</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">Java Fundamentals</h3>
+
+                <p class="project-category">Coursera - Programming</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="database">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/DataAnalytics Certificate.pdf', 'Data Analytics Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="analytics-outline"></ion-icon>
+                    <span>Data Analytics</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">Data Analytics</h3>
+
+                <p class="project-category">Analytics - Database</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="programming">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/HTML and CSS3 advanced trainning.pdf', 'HTML and CSS3 Advanced Training Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="code-outline"></ion-icon>
+                    <span>HTML & CSS3</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">HTML & CSS3 Advanced</h3>
+
+                <p class="project-category">Web Development - Programming</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="programming">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/IOT.pdf', 'Internet of Things (IoT) Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="wifi-outline"></ion-icon>
+                    <span>IoT</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">Internet of Things</h3>
+
+                <p class="project-category">IoT - Programming</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="programming">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/Networking and web technology.pdf', 'Networking and Web Technology Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="globe-outline"></ion-icon>
+                    <span>Networking</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">Networking & Web Tech</h3>
+
+                <p class="project-category">Networking - Programming</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="database">
+              <a href="#" onclick="openCertificateModal('./assets/certificates/Spring Data JPA with Boot.pdf', 'Spring Data JPA with Boot Certificate')">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+
+                  <div class="certificate-placeholder">
+                    <ion-icon name="server-outline"></ion-icon>
+                    <span>Spring JPA</span>
+                  </div>
+                </figure>
+
+                <h3 class="project-title">Spring Data JPA</h3>
+
+                <p class="project-category">Spring Boot - Database</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - Certificate Preview Modal
+      -->
+      <div class="certificate-modal-container" id="certificateModal">
+        <div class="certificate-overlay" onclick="closeCertificateModal()"></div>
+        
+        <div class="certificate-modal">
+          <button class="certificate-close-btn" onclick="closeCertificateModal()">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+          
+          <div class="certificate-header">
+            <h3 id="certificateTitle">Certificate Preview</h3>
+          </div>
+          
+          <div class="certificate-content">
+            <iframe id="certificatePdf" src="" width="100%" height="600px" frameborder="0"></iframe>
+          </div>
+          
+          <div class="certificate-actions">
+            <button class="download-btn" onclick="downloadCertificate()">
+              <ion-icon name="download-outline"></ion-icon>
+              Download Certificate
+            </button>
+            <button class="fullscreen-btn" onclick="openFullscreen()">
+              <ion-icon name="expand-outline"></ion-icon>
+              View Fullscreen
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+          
+          <p class="contact-form-description">
+            Fill out the form below and click "Send Message" to open your email client with the message pre-filled. 
+            You can also reach me directly at <a href="mailto:gauthaampremkumar@gmail.com" class="contact-email-link">gauthaampremkumar@gmail.com</a>
+          </p>
+
+          <form class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <input type="text" name="subject" class="form-input" placeholder="Subject" required data-form-input>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input rows="6"></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+          <!-- Success/Error Messages -->
+          <div class="form-message" id="form-message" style="display: none;">
+            <p id="message-text"></p>
+          </div>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
