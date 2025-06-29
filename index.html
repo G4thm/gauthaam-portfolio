@@ -727,11 +727,11 @@
           <h3 class="h3 form-title">Contact Form</h3>
           
           <p class="contact-form-description">
-            Fill out the form below and click "Send Message" to open your email client with the message pre-filled. 
+            Fill out the form below and I'll receive your message directly. 
             You can also reach me directly at <a href="mailto:gauthaampremkumar@gmail.com" class="contact-email-link">gauthaampremkumar@gmail.com</a>
           </p>
 
-          <form class="form" data-form>
+          <form class="form" data-form netlify name="contact">
 
             <div class="input-wrapper">
               <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
@@ -772,6 +772,11 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+
+  <!--
+    - EmailJS for contact form
+  -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!--
     - ionicon link
