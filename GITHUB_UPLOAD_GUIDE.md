@@ -26,7 +26,7 @@ git config --global user.email "gauthaam04@gmail.com"
 
 ### Add the remote repository:
 ```powershell
-git remote add origin https://github.com/G4thm/portfolio-website.git
+git remote add origin https://github.com/G4thm/gauthaam-portfolio.git
 ```
 
 ## Step 3: Commit and Push Your Project
