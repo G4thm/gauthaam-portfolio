@@ -302,22 +302,23 @@ function viewResumeFullscreen() {
   window.open(resumePath, '_blank');
 }
 
-// Enhanced Contact Form Handling with working email solutions
+// Enhanced Contact Form Handling with Netlify Forms
 const contactForm = document.querySelector("[data-form]");
 const formMessage = document.getElementById("form-message");
 const messageText = document.getElementById("message-text");
 
+// Check if we're on the thank you page (after successful submission)
+if (window.location.pathname === '/thank-you' || window.location.search.includes('success=true')) {
+  // Redirect back to home page after showing success
+  setTimeout(() => {
+    window.location.href = '/#contact';
+  }, 3000);
+}
+
 // Form submission handler
 if (contactForm) {
   contactForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
+    // For Netlify Forms, we'll let it submit naturally but add some UX improvements
     
     // Show loading state
     const submitBtn = document.querySelector("[data-form-btn]");
@@ -325,251 +326,19 @@ if (contactForm) {
     submitBtn.innerHTML = '<ion-icon name="sync-outline"></ion-icon><span>Sending...</span>';
     submitBtn.disabled = true;
     
-    // Check if we're on Netlify (has netlify forms)
-    if (contactForm.hasAttribute('netlify')) {
-      sendWithNetlifyForms(formData, submitBtn, originalText);
-    } else {
-      // Fallback to other methods
-      sendWithFormspree(formData, submitBtn, originalText);
-    }
-  });
-}
-
-// Method 1: Netlify Forms (works automatically on Netlify)
-function sendWithNetlifyForms(formData, submitBtn, originalText) {
-  // Submit to Netlify's form handler
-  fetch('/', {
-    method: 'POST',
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  })
-  .then(response => {
-    if (response.ok) {
-      showMessage("✅ Thank you! Your message has been sent successfully. I'll get back to you soon!", "success");
-      contactForm.reset();
-      submitBtn.setAttribute("disabled", "");
-    } else {
-      // Fallback to direct email methods
-      sendWithDirectEmail(formData, submitBtn, originalText);
-    }
-  })
-  .catch(error => {
-    console.error('Netlify Forms Error:', error);
-    // Fallback to direct email methods
-    sendWithDirectEmail(formData, submitBtn, originalText);
-  })
-  .finally(() => {
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-  });
-}
-
-// Method 2: Direct email sending
-function sendWithDirectEmail(formData, submitBtn, originalText) {
-  const data = {
-    to: 'gauthaampremkumar@gmail.com',
-    from: formData.get('email'),
-    subject: `Portfolio Contact: ${formData.get('subject')}`,
-    html: `
-      <h3>New Portfolio Contact</h3>
-      <p><strong>Name:</strong> ${formData.get('name')}</p>
-      <p><strong>Email:</strong> ${formData.get('email')}</p>
-      <p><strong>Subject:</strong> ${formData.get('subject')}</p>
-      <p><strong>Message:</strong></p>
-      <p>${formData.get('message').replace(/\n/g, '<br>')}</p>
-    `
-  };
-  
-  // Try multiple email services
-  Promise.all([
-    sendWithEmailService1(data),
-    sendWithEmailService2(data)
-  ])
-  .then(results => {
-    if (results.some(result => result.success)) {
-      showMessage("✅ Message sent successfully! I'll get back to you soon!", "success");
-      contactForm.reset();
-      submitBtn.setAttribute("disabled", "");
-    } else {
-      sendWithEnhancedMailto(formData, submitBtn, originalText);
-    }
-  })
-  .catch(error => {
-    console.error('Direct email error:', error);
-    sendWithEnhancedMailto(formData, submitBtn, originalText);
-  });
-}
-
-// Email Service 1: Simple email API
-function sendWithEmailService1(data) {
-  return fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(response => ({ success: response.ok }))
-  .catch(() => ({ success: false }));
-}
-
-// Email Service 2: Alternative service
-function sendWithEmailService2(data) {
-  return fetch('https://formsubmit.co/gauthaampremkumar@gmail.com', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: data.from,
-      email: data.from,
-      subject: data.subject,
-      message: data.html
-    })
-  })
-  .then(response => ({ success: response.ok }))
-  .catch(() => ({ success: false }));
-}
-
-// Method 1: Formspree - Reliable email service
-function sendWithFormspree(formData, submitBtn, originalText) {
-  // Create a simple fetch request to a working Formspree endpoint
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    subject: formData.get('subject'),
-    message: formData.get('message'),
-    _replyto: formData.get('email'),
-    _subject: `Portfolio Contact from ${formData.get('name')}`
-  };
-  
-  fetch('https://formspree.io/f/mkgwgrdz', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (response.ok) {
-      showMessage("✅ Thank you! Your message has been sent successfully. I'll get back to you soon!", "success");
-      contactForm.reset();
-      submitBtn.setAttribute("disabled", "");
-    } else {
-      // Try alternative email service
-      sendWithEmailto(formData, submitBtn, originalText);
-    }
-  })
-  .catch(error => {
-    console.error('Formspree Error:', error);
-    // Try alternative email service
-    sendWithEmailto(formData, submitBtn, originalText);
-  })
-  .finally(() => {
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-  });
-}
-
-// Method 2: Alternative email service
-function sendWithEmailto(formData, submitBtn, originalText) {
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    subject: formData.get('subject'),
-    message: formData.get('message'),
-    to: 'gauthaampremkumar@gmail.com'
-  };
-  
-  // Try a simple API that forwards emails
-  fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      service_id: 'default_service',
-      template_id: 'default_template',
-      user_id: 'public_key',
-      template_params: data
-    })
-  })
-  .then(response => {
-    if (response.ok) {
-      showMessage("✅ Message sent successfully! I'll get back to you soon!", "success");
-      contactForm.reset();
-      submitBtn.setAttribute("disabled", "");
-    } else {
-      // Final fallback to enhanced mailto
-      sendWithEnhancedMailto(formData, submitBtn, originalText);
-    }
-  })
-  .catch(error => {
-    console.error('Alternative service error:', error);
-    // Final fallback to enhanced mailto  
-    sendWithEnhancedMailto(formData, submitBtn, originalText);
-  });
-}
-
-// Method 3: EmailJS backup (if configured)
-function tryEmailJSBackup(formData) {
-  if (typeof emailjs !== 'undefined' && window.emailjsConfigured) {
-    const templateParams = {
-      from_name: formData.get('name'),
-      from_email: formData.get('email'),
-      subject: formData.get('subject'),
-      message: formData.get('message'),
-      to_email: 'gauthaampremkumar@gmail.com'
-    };
+    // Show a loading message
+    showMessage("📤 Submitting your message...", "info");
     
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-      .then(() => console.log('EmailJS backup sent successfully'))
-      .catch(error => console.log('EmailJS backup failed:', error));
-  }
-}
-
-// Method 4: Enhanced mailto fallback (last resort)
-function sendWithEnhancedMailto(formData, submitBtn, originalText) {
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const subject = formData.get('subject');
-  const message = formData.get('message');
-  
-  const emailBody = `Hi Gauthaam,
-
-I'm reaching out through your portfolio website.
-
-Contact Details:
-• Name: ${name}
-• Email: ${email}
-• Subject: ${subject}
-
-Message:
-${message}
-
-Best regards,
-${name}
-
----
-This message was sent from your portfolio contact form.`;
-
-  const mailtoUrl = `mailto:gauthaampremkumar@gmail.com?subject=${encodeURIComponent('Portfolio Contact: ' + subject)}&body=${encodeURIComponent(emailBody)}`;
-  
-  try {
-    window.location.href = mailtoUrl;
-    showMessage("📧 Email client opened! Please send the message from your email app.", "info");
+    // Let the form submit naturally to Netlify
+    // Don't prevent default - let Netlify handle it
     
-    // Also copy to clipboard as backup
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(emailBody).then(() => {
-        setTimeout(() => {
-          showMessage("📋 Message also copied to clipboard as backup!", "info");
-        }, 2000);
-      });
-    }
-    
-    contactForm.reset();
-    submitBtn.setAttribute("disabled", "");
-  } catch (error) {
-    showMessage("📱 Please contact me directly at: gauthaampremkumar@gmail.com", "info");
-  }
+    // Optional: Add a small delay to show the loading state
+    setTimeout(() => {
+      // The form will submit naturally after this delay
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }, 1000);
+  });
 }
 
 // Show message function
